@@ -1,0 +1,23 @@
+<%- include ('../partials/header') %>
+<div class="container my-5">
+    <header class="jumbotron">
+        <h1>Contact Me</h1>
+    </header>
+    <div class="container">
+        <form action="">
+            <label for="name" style="font-weight: bolder;">Name:</label><br>
+            <input type="text" id="name" name="name" placeholder="Enter your name"><br>
+
+            <label for="email" style="font-weight: bolder;">Email:</label><br>
+            <input type="email"id="email" name="email" placeholder="Enter your email"><br>
+
+            <label for="ask"style="font-weight: bolder;">What is your question?</label><br>
+            <textarea id="ask" placeholder="Write here..." style="height: 200px; width: 200px;"></textarea><br>
+
+            <br>
+
+            <input type="submit" class="btn btn-info" value="Submit">
+        </form>
+    </div>
+</div>
+<%- include ('../partials/footer') %>
