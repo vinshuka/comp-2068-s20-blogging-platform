@@ -67,7 +67,7 @@ app.use('/', (req, res, next) => {
 
 // Our routes
 const routes = require('./routes.js');
-app.use('/', routes);
+app.use('/api', routes);
 
 app.get('/test', (req, res) => {
     res.status(200).json({message: 'Hello World'});

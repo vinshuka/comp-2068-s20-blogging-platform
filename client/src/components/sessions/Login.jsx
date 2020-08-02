@@ -18,7 +18,7 @@ const Login = ({setUser}) => {
 
 
         try {
-            const resp = await Axios.post('/authenticate', inputs);
+            const resp = await Axios.post('/api/authenticate', inputs);
 
             if (resp.status === 200) {
                 setUser(resp.data.user);
