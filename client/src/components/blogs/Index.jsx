@@ -43,7 +43,7 @@ const Index = function ({user}) {
 
             <hr/>
 
-            <div className="container">
+            <div className="content">
                 {blogs && blogs.map((blog, i) => (
                     <div key={i} className="card my-3">
                         <div className="card-header clearfix">

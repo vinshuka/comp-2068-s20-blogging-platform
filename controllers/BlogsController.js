@@ -2,6 +2,11 @@ const viewPath = 'blogs';
 const Blog = require('../models/blog');
 const User = require('../models/user');
 
+const getUser = async req => {
+    const { user: email } = req.session.passport;
+    return await User.findOne({email: email});
+}
+
 exports.index = async (req, res) => {
     try {
         const blogs = await Blog
@@ -59,21 +64,19 @@ exports.edit = async (req, res) => {
 
 exports.update = async (req, res) => {
     try {
-        const { user: email } = req.session.passport;
-        const user = await user.findOne({email:email});
+        const user = await getUser(req);
 
-        let blog = await Blog.findById(req.body.id);
+        let blog = await Blog.findOne({user: user._id, _id: req.body.id});
         if (!blog) throw new Error('Blog could not be found');
 
         const attributes = {user: user._id, ...req.body}
         await Blog.validate(attributes);
-        await Blog.updateOne(attributes.id, attributes);
+        await Blog.updateOne({_id: req.body.id, user: user._id}, {...req.body});
 
-        req.flash('success', 'The blog was updated successfully');
-        res.redirect(`/blogs/${req.body.id}`);
+        
+        res.status(200).json(blog);
     } catch (error) {
-        req.flash('danger', `There was an error updating this blog: ${error}`);
-        res.redirect(`/blogs/${req.body.id}/edit`);
+        res.status(400).json({status: 'failed', message: `There was an error updating the blog`, error});
     }
 };
 
