@@ -18,7 +18,7 @@ const Edit = function (props) {
 
     useEffect((id) => {
         (async () => {
-            const blogResp = await Axios.get(`/blogs/${id}`);
+            const blogResp = await Axios.get(`/api/blogs/${id}`);
             if (blogResp.status === 200) setInputs(blogResp.data);
         })();
     }, []);
