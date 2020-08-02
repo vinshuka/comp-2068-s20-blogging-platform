@@ -16,7 +16,7 @@ const Edit = function (props) {
 
     const [redirect, setRedirect] = useState(false);
 
-    useEffect((id) => {
+    useEffect(() => {
         (async () => {
             const blogResp = await Axios.get(`/api/blogs/${id}`);
             if (blogResp.status === 200) setInputs(blogResp.data);
