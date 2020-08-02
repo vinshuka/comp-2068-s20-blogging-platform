@@ -39,7 +39,10 @@ const UserSchema = new mongoose.Schema({
         ]
     }
 }, {
-    timestamps: true,  
+    timestamps: true,
+    toJSON: {
+        getters: true
+    }  
 });
 
 // Validation attributes

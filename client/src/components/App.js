@@ -1,6 +1,8 @@
-import React from 'react';
-import Routes from './Routes'
-import Nav from './shared/Nav'
+import React, { useState } from 'react';
+import Routes from './Routes';
+import Nav from './shared/Nav';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //import Axios from 'axios';
 
@@ -9,10 +11,13 @@ function App() {
   //   console.log(resp.data.message);
   // });
 
+  const [user, setUser] = useState(false);
+
   return (
     <React.Fragment>
-      <Nav/>
-      <Routes/>
+      <ToastContainer/>
+      <Nav user={user}/>
+      <Routes user={user} setUser={setUser}/>
     </React.Fragment>
   );
 }
